@@ -75,6 +75,29 @@ This application is designed to manage employee schedules, including adding and 
     - **Remove Employee**: Remove an employee from the database.
     - **Export Schedule**: Export the current schedule to an Excel file.
 
+## Screenshots
+
+**Schedule Viewer**
+<img width="659" alt="scheduletab" src="https://github.com/jeremiahwarinner/Schedule-Manager/assets/158241209/50fe9b23-c28a-42e4-afb7-3fa8efe99867">
+
+**Edit Shifts**
+<img width="659" alt="editshifts" src="https://github.com/jeremiahwarinner/Schedule-Manager/assets/158241209/ba2f1d4d-a452-489d-9792-227eb95b4767">
+
+**Add Employee**
+<img width="659" alt="addemployeetab" src="https://github.com/jeremiahwarinner/Schedule-Manager/assets/158241209/8d37b30f-beeb-4483-a5f9-43dac5f8bbe5">
+
+**Manually Fill Empty Shifts**
+<img width="659" alt="fillemptyshifts" src="https://github.com/jeremiahwarinner/Schedule-Manager/assets/158241209/e9bab541-7a86-480b-a710-b5c6bccab0f2">
+
+**Remove Employee**
+<img width="659" alt="removeemployee" src="https://github.com/jeremiahwarinner/Schedule-Manager/assets/158241209/265caab2-bb3b-4a60-8095-927dc3296aba">
+
+**Update Skills**
+<img width="659" alt="updateskillstab" src="https://github.com/jeremiahwarinner/Schedule-Manager/assets/158241209/a16773b4-4e3d-4884-8d07-f205078e5c97">
+
+
+
+
 ## Contributing
 
 1. **Fork the repository**.
