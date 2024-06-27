@@ -25,7 +25,7 @@ This application is designed to manage employee schedules, including adding and 
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/yourusername/schedule-management.git
+    git clone https://github.com/jeremiahwarinner/Schedule-Manager.git
     cd schedule-management
     ```
 
