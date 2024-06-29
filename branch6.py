@@ -123,6 +123,7 @@ def add_employee_form(add_frame):
         skills = ', '.join(selected_skills)
         add_employee(name, rating, skills)
         messagebox.showinfo("Success", "Employee added successfully")
+        refresh_all_frames()
 
     tk.Label(add_frame, text="Name:", font=('Helvetica', 12)).grid(row=0, column=0, pady=5, sticky='e')
     tk.Label(add_frame, text="Rating:", font=('Helvetica', 12)).grid(row=1, column=0, pady=5, sticky='e')
@@ -173,6 +174,7 @@ def update_employee_skills_form(update_frame):
         skills = ', '.join(selected_skills)
         update_employee_skills(name, skills)
         messagebox.showinfo("Success", "Employee skills updated successfully")
+        refresh_all_frames()
 
     tk.Label(update_frame, text="Name:", font=('Helvetica', 12)).grid(row=0, column=0, pady=5, sticky='e')
     tk.Label(update_frame, text="New Skills:", font=('Helvetica', 12)).grid(row=1, column=0, pady=5, sticky='e')
@@ -228,6 +230,7 @@ def edit_shift_form(edit_frame):
         new_employee = employee_var.get()
         update_shift(day, role, new_employee)
         messagebox.showinfo("Success", "Shift updated successfully")
+        refresh_all_frames()
 
     tk.Label(edit_frame, text="Select Shift:", font=('Helvetica', 12)).grid(row=0, column=0, pady=5, sticky='e')
     tk.Label(edit_frame, text="New Employee:", font=('Helvetica', 12)).grid(row=1, column=0, pady=5, sticky='e')
@@ -237,7 +240,7 @@ def edit_shift_form(edit_frame):
 
     shift_var = tk.StringVar()
     shift_dropdown = ttk.Combobox(edit_frame, textvariable=shift_var, font=('Helvetica', 12), width=28)
-    shift_dropdown['values'] = [f"{day.capitalize()} - {role} (Current: {employee})" for day, role, employee in schedule_data]
+    shift_dropdown['values'] = [f"{day.capitalize()} - {role} (Current: {employee})" for day, role, employee in schedule_data if employee != 'control']
     shift_dropdown.grid(row=0, column=1, pady=5)
 
     employee_var = tk.StringVar()
@@ -260,6 +263,7 @@ def fill_empty_shifts_form(fill_frame):
         if new_employee:
             update_shift(day, role, new_employee)
             messagebox.showinfo("Success", "Shift filled successfully")
+            refresh_all_frames()
         else:
             messagebox.showerror("Error", "Please select an employee")
 
@@ -307,6 +311,7 @@ def remove_employee_form(remove_frame):
         if name:
             remove_employee(name)
             messagebox.showinfo("Success", f"Employee {name} removed successfully")
+            refresh_all_frames()
         else:
             messagebox.showerror("Error", "Please select an employee")
 
@@ -411,6 +416,7 @@ def generate_schedule():
     # Save the schedule to the database
     schedule.save_to_db()
     messagebox.showinfo("Success", "Schedule generated successfully")
+    refresh_all_frames()
 
 # Function to export the current schedule to an Excel file
 def export_schedule():
@@ -435,9 +441,18 @@ def export_schedule():
 
     messagebox.showinfo("Success", "Schedule exported to schedule.xlsx")
 
+# Function to refresh all frames
+def refresh_all_frames():
+    view_schedule(view_schedule_frame)
+    add_employee_form(add_employee_frame)
+    update_employee_skills_form(update_employee_skills_frame)
+    edit_shift_form(edit_shift_frame)
+    fill_empty_shifts_form(fill_empty_shifts_frame)
+    remove_employee_form(remove_employee_frame)
+
 # Main window
 root = tk.Tk()
-root.title("Schedule Management")
+root.title("SchedulEase")
 
 # Create a notebook for tabbed interface
 notebook = ttk.Notebook(root)
@@ -465,12 +480,7 @@ notebook.add(export_schedule_frame, text="Export Schedule")
 notebook.pack(expand=1, fill='both')
 
 # Call the functions to populate the tabs
-view_schedule(view_schedule_frame)
-add_employee_form(add_employee_frame)
-update_employee_skills_form(update_employee_skills_frame)
-edit_shift_form(edit_shift_frame)
-fill_empty_shifts_form(fill_empty_shifts_frame)
-remove_employee_form(remove_employee_frame)
+refresh_all_frames()
 
 # Add Generate Schedule button in the generate_schedule_frame
 tk.Button(generate_schedule_frame, text="Generate Schedule", command=generate_schedule, font=('Helvetica', 12), width=20, height=2).pack(pady=20)
