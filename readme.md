@@ -102,6 +102,11 @@ This application is designed to manage employee schedules, including adding and 
 <img width="659" alt="updateskillstab" src="https://github.com/jeremiahwarinner/Schedule-Manager/assets/158241209/a16773b4-4e3d-4884-8d07-f205078e5c97">
 
 
+##Demo
+
+
+https://github.com/user-attachments/assets/479f2988-6db0-43a4-9402-e8a1702fb1da
+
 
 
 ## Contributing
